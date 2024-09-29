@@ -1,0 +1,30 @@
+Table Socios {
+  id_socio integer [primary key]
+  nombre varchar(100)
+  direccion varchar(255)
+  created_at timestamp
+}
+
+Table Barcos {
+  matricula varchar(20) [primary key]
+  nombre varchar(100)
+  numero_amarre integer
+  cuota decimal(10, 2)
+  id_socio integer
+  created_at timestamp
+}
+
+Table Salidas {
+  id_salida integer [primary key]
+  matricula varchar(20)
+  fecha_salida date
+  hora_salida time
+  destino varchar(100)
+  patron_nombre varchar(100)
+  patron_direccion varchar(255)
+  created_at timestamp
+}
+
+// Relaciones
+Ref: Barcos.id_socio > Socios.id_socio // muchos a uno (un socio tiene muchos barcos)
+Ref: Salidas.matricula > Barcos.matricula // muchos a uno (un barco tiene muchas salidas)
